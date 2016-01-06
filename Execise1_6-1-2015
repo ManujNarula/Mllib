@@ -1,0 +1,20 @@
+# Create RDD from local text file
+textdata =sc.textFile("textdata.txt")
+
+# View contents of RDD
+for line in textdata.collect():
+	printline
+	
+# filter the word orange	
+orangelines = textdata.filter(lambda line : "orange" in line)
+
+# View contents
+for line in orangelines.collect():
+	printline
+	
+# change the two lines to upper case
+caps = orangelines.map(lambda line : line.upper())
+	
+# Print line	
+for line in caps.collect(): 
+ printline
