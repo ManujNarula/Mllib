@@ -1,0 +1,12 @@
+# Create RDD from local text file 
+2 textdata =sc.textFile("textdata.txt") 
+3 
+ 
+4 # word count 
+5 words = textdata.flatmap(lambda line: line split(" ")) 
+6 result = words.map (lambda x : (x,1)).reducedByKey(lambda x,y : x + y)	 
+7 
+ 
+8 # View contents  
+9 for line in textdata.collect(): 
+10 	printline 
